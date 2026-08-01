@@ -1,3 +1,4 @@
+import { Button } from "react-native/types_generated/index";
 import { themes } from "../../global/themes";
 
 import { StyleSheet } from "react-native";
@@ -28,6 +29,9 @@ export const style = StyleSheet.create({
     }, 
         Icon: {
             width: '100%'
+    },
+        buttonInput: {
+            width: '10%'
         }
 
 });

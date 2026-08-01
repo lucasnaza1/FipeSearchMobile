@@ -45,10 +45,10 @@ export const Input = forwardRef((props : Props, ref: ForwardedRef<TextInput> | n
 
     return (
                <Fragment>   
-               <Text style={style.titleInput}> { title } </Text>     
+               {title&&<Text style={style.titleInput}> { title } </Text>}     
                     <View style = {[style.boxInput, {padding:calculatePaddingSize()}]}>
                         {IconLeft && IconLeftName &&(
-                        <TouchableOpacity onPress={onIconLeftPress}>
+                        <TouchableOpacity onPress={onIconLeftPress}  style = {style.buttonInput}>
                             <IconLeft name = {IconLeftName as any} size={20} color={themes.colors.secundary} style={style.Icon}></IconLeft>
                         </TouchableOpacity>
                         )}
@@ -57,7 +57,7 @@ export const Input = forwardRef((props : Props, ref: ForwardedRef<TextInput> | n
                                 {...rest}
                             />
                         {IconRight && IconRightName &&(
-                            <TouchableOpacity onPress={onIconRightPress}>
+                            <TouchableOpacity onPress={onIconRightPress} style = {style.buttonInput}>
                                 <IconRight name = {IconRightName as any} size={20} color={themes.colors.secundary} style={style.Icon}></IconRight>
                             </TouchableOpacity>
                         )}

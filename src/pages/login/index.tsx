@@ -15,6 +15,7 @@ import Logo from "../../assets/logo-header-128x128.png";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Input } from "../../components/input";
 import { AntDesign } from "@expo/vector-icons";
+import { Button } from "../../components/button";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ export default function Login() {
           Alert.alert("Usuário ou Senha inválido!");
         }
         setLoading(false);
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -68,13 +69,11 @@ export default function Login() {
         <TextInput />
       </View>
       <View style={style.boxButton}>
-        <TouchableOpacity style={style.button} onPress={() => getLogin()}>
-          {loading ? (
-            <ActivityIndicator color={themes.colors.primary} size={"small"} />
-          ) : (
-            <Text style={style.textButton}>Acessar</Text>
-          )}
-        </TouchableOpacity>
+        <Button 
+          text="ACESSAR"
+          loading= {loading}
+          onPress={() => getLogin()}
+          />
       </View>
       <Text style={style.textQuestionAccount}>
         Não tem conta?{" "}

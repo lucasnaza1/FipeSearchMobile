@@ -1,25 +1,28 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import SearchScreen from "../pages/searchScreen";
-import VehicleDetails from "../pages/vehicleDetails";
 import Login from "../pages/login";
+import bottomRoutes from "./bottom.routes";
 
 export default function Routes(){
     const Stack = createStackNavigator()
     
     return(
-        <Stack.Navigator>
+        <Stack.Navigator
+            initialRouteName="login"
+            screenOptions={{
+                headerShown:false,
+                cardStyle:{
+                    backgroundColor: "#FFF"
+                }
+            }}
+        >
             <Stack.Screen 
                 name = "login"
                 component = {Login}
             />         
             <Stack.Screen 
-                name = "search-screen"
-                component = {SearchScreen}
-            />
-            <Stack.Screen 
-                name = "vehicle-details"
-                component = {VehicleDetails}
+                name = "BottomRoutes"
+                component = {bottomRoutes}
             />
          </Stack.Navigator>   
     )

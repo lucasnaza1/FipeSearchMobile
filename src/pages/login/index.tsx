@@ -16,22 +16,29 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Input } from "../../components/input";
 import { AntDesign } from "@expo/vector-icons";
 import { Button } from "../../components/button";
+import { useNavigation, NavigationProp } from "@react-navigation/native"
 
 export default function Login() {
+
+const navigation = useNavigation<NavigationProp<any>>();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(true)
   const [loading, setLoading] = useState(false);
 
   async function getLogin() {
+          setLoading(true);
+
     try {
-      setLoading(true);
       if (!email || !password) {
         return Alert.alert("Atenção!", "Informe os campos obrigatórios!!");
       }
 
+      navigation.navigate("BottomRoutes")
+
       setTimeout(() => {
-        if (email == "mail.tomail@mail.com" && password == "123456") {
+        if (email == "a" && password == "a") {
           Alert.alert("Logado com Sucesso!");
         } else {
           Alert.alert("Usuário ou Senha inválido!");
@@ -40,6 +47,8 @@ export default function Login() {
       }, 1000);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false)
     }
   }
 

@@ -12,5 +12,10 @@ export const style = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
+    },
+    tabText: {
+        color: themes.colors.secundary,
+        fontSize: 16,
+        marginTop: 5,
     }
 });

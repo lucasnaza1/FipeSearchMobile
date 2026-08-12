@@ -28,29 +28,36 @@ const navigation = useNavigation<NavigationProp<any>>();
   const [loading, setLoading] = useState(false);
 
   async function getLogin() {
-          setLoading(true);
+  setLoading(true);
+  try {
+    if (!email || !password || email.trim() === "" || password.trim() === "") {
+      Alert.alert("Atenção!", "Informe os campos obrigatórios!!");
+      return;
+    } /*else if (!email.includes("@") || !email.includes(".com")) {
+      Alert.alert("Atenção!", "Informe um e-mail válido!!");
+      return;
+    }*/
 
-    try {
-      if (!email || !password) {
-        return Alert.alert("Atenção!", "Informe os campos obrigatórios!!");
-      }
-
-      navigation.navigate("BottomRoutes")
-
+    // Futuramente conversará com chamada real de API para validar login, mas por enquanto, vamos simular a validação com um setTimeout.
+    const isValid = await new Promise<boolean>((resolve) => {
       setTimeout(() => {
-        if (email == "a" && password == "a") {
-          Alert.alert("Logado com Sucesso!");
-        } else {
-          Alert.alert("Usuário ou Senha inválido!");
-        }
-        setLoading(false);
+        resolve(email === "a" && password === "a");
       }, 1000);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false)
+    });
+
+    if (isValid) {
+      Alert.alert("Logado com Sucesso!");
+      navigation.navigate("BottomRoutes");
+    } else {
+      Alert.alert("Atenção!", "Usuário ou Senha inválido!");
     }
+  } catch (error) {
+    console.log(error);
+    Alert.alert("Erro", "Não foi possível realizar o login. Tente novamente.");
+  } finally {
+    setLoading(false);
   }
+}
 
   return (
     <View style={style.container}>

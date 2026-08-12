@@ -1,10 +1,10 @@
 import {
   createBottomTabNavigator,
-  createBottomTabScreen,
 } from '@react-navigation/bottom-tabs';
 import SearchScreen from '../pages/searchScreen';
-import VehicleDetails from '../pages/vehicleDetails';
 import CustomTabBar from '../components/customTabBar';
+import Favorites from '../pages/Favorites';
+import Settings from '../pages/Definitions';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,8 +21,12 @@ export default function bottomRoutes(){
                 component={SearchScreen}
             />
             <Tab.Screen
-                name = "VehicleDetails"
-                component={VehicleDetails}
+                name = "Favorites"
+                component={Favorites}
+            />
+            <Tab.Screen
+                name = "Settings"
+                component={Settings}
             />
         </Tab.Navigator>
     )

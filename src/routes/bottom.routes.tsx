@@ -5,12 +5,14 @@ import SearchScreen from '../pages/searchScreen';
 import CustomTabBar from '../components/customTabBar';
 import Favorites from '../pages/Favorites';
 import Settings from '../pages/Definitions';
+import { AuthProviderList } from '../context/authContext_list';
 
 const Tab = createBottomTabNavigator();
 
 export default function bottomRoutes(){
     return(
-        <Tab.Navigator
+        <AuthProviderList>
+            <Tab.Navigator
             screenOptions={{
                 headerShown:false 
             }} 
@@ -29,5 +31,6 @@ export default function bottomRoutes(){
                 component={Settings}
             />
         </Tab.Navigator>
+        </AuthProviderList>
     )
 };

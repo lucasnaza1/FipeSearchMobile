@@ -7,9 +7,14 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { LinearGradient } from "expo-linear-gradient";
+import { useContext } from "react";
+import { AuthContextList } from "../../context/authContext_list";
+
 
 export default ({state, navigation}: BottomTabBarProps) => { 
     
+    const { onOpen } = useContext<any>(AuthContextList);
+
     const go = (screen: string) => {
         navigation.navigate(screen);
     }
@@ -20,7 +25,7 @@ export default ({state, navigation}: BottomTabBarProps) => {
                  <FontAwesome name="heart" size={30} style={{opacity: state.index === 1 ? 1 : 0.5, color: themes.colors.secundary, fontSize: 32}} />
                 <Text style={style.tabText}>Favoritos</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={style.tabSearchItem} onPress={() => go("SearchScreen")}>
+            <TouchableOpacity style={style.tabSearchItem} onPress={() => onOpen()}>
                 <LinearGradient
                                 colors={themes.gradients.headerScreen.colors}
                                 start={themes.gradients.headerScreen.start}
